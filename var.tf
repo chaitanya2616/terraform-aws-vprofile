@@ -1,9 +1,9 @@
-variable AWS_REGION{
+variable "AWS_REGION" {
   default = "us-east-1"
 }
 
-variable AMIS {
-  type = map
+variable "AMIS" {
+  type = map(any)
   default = {
     us-east-1 = "ami-0aa2b7722dc1b5612"
     us-east-2 = "ami-06c4532923d4ba1ec"
@@ -11,18 +11,18 @@ variable AMIS {
   }
 }
 
-variable PRIV_KEY_PATH {
+variable "PRIV_KEY_PATH" {
   default = "vprofilekey"
 }
-variable PUB_KEY_PATH {
+variable "PUB_KEY_PATH" {
   default = "vprofilekey.pub"
 }
 
-variable USERNAME {
+variable "USERNAME" {
   default = "ubuntu"
 }
 
-variable MYIP {
+variable "MYIP" {
   default = "103.208.71.57/32"
 }
 
@@ -42,11 +42,11 @@ variable "dbname" {
   default = "accounts"
 }
 variable "dbpass" {
-  default =  "admin123"
+  default = "admin123"
 }
 
 /*count of instance*/
-variable instance_count {
+variable "instance_count" {
   default = "1"
 }
 
@@ -54,13 +54,13 @@ variable "VPC_NAME" {
   default = "vprofile-VPC"
 }
 
-variable Zone1 {
+variable "Zone1" {
   default = "us-east-1a"
 }
-variable Zone2 {
+variable "Zone2" {
   default = "us-east-1b"
 }
-variable Zone3 {
+variable "Zone3" {
   default = "us-east-1c"
 }
 
