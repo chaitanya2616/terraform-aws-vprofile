@@ -1,14 +1,13 @@
-resource "aws_elastic_beanstalk_environment" "vpro-bean-myprod26" {
-  name                = "vpro-bean-myprod26"
+resource "aws_elastic_beanstalk_environment" "vpro-bean-prod" {
+  name                = "vpro-bean-prod"
   application         = aws_elastic_beanstalk_application.vpro-prod-1.name
-  solution_stack_name = "64bit Amazon Linux 2 v4.3.7 running Tomcat 8.5 Corretto 11"
+  solution_stack_name = "64bit Amazon Linux 2 v4.3.0 running Tomcat 8.5 Corretto 11"
   cname_prefix        = "vpro-bean-prod-domain"
   setting {
     name      = "VPCId"
     namespace = "aws:ec2:vpc"
     value     = module.vpc.vpc_id
   }
-
   setting {
     namespace = "aws:autoscaling:launchconfiguration"
     name      = "IamInstanceProfile"
@@ -25,55 +24,58 @@ resource "aws_elastic_beanstalk_environment" "vpro-bean-myprod26" {
     name      = "Subnets"
     value     = join(",", [module.vpc.private_subnets[0], module.vpc.private_subnets[1], module.vpc.private_subnets[2]])
   }
-
   setting {
     namespace = "aws:ec2:vpc"
     name      = "ELBSubnets"
     value     = join(",", [module.vpc.public_subnets[0], module.vpc.public_subnets[1], module.vpc.public_subnets[2]])
   }
+
   setting {
     namespace = "aws:autoscaling:launchconfiguration"
     name      = "InstanceType"
     value     = "t2.micro"
   }
+
   setting {
     namespace = "aws:autoscaling:launchconfiguration"
     name      = "EC2KeyName"
     value     = aws_key_pair.vprofilekey.key_name
   }
+
   setting {
     namespace = "aws:autoscaling:asg"
     name      = "Availability Zones"
     value     = "Any 3"
   }
   setting {
-    name      = "aws:autoscaling:asg"
-    namespace = "MinSize"
+    namespace = "aws:autoscaling:asg"
+    name      = "MinSize"
     value     = "1"
   }
   setting {
-    name      = "aws:autoscaling:asg"
-    namespace = "MaxSize"
-    value     = "4"
+    namespace = "aws:autoscaling:asg"
+    name      = "MaxSize"
+    value     = "8"
   }
+
   setting {
-    name      = "aws:elasticbeanstalk:application:environment"
-    namespace = "environment"
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name      = "environment"
     value     = "prod"
   }
-  /*setting {
-    name      = "aws:elasticbeanstalk:application:environment"
-    namespace = "LOGGING_APPENDER"
-    value     = "GRAYLOG"
-  }*/
   setting {
-    name      = "aws:elasticbeanstalk:healthreporting:system"
-    namespace = "SystemType"
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name      = "LOGGING_APPENDER"
+    value     = "GRAYLOG"
+  }
+  setting {
+    namespace = "aws:elasticbeanstalk:healthreporting:system"
+    name      = "SystemType"
     value     = "basic"
   }
   setting {
-    name      = "aws:autoscaling:updatepolicy:rollingupdate"
-    namespace = "RollingUpdateEnabled"
+    namespace = "aws:autoscaling:updatepolicy:rollingupdate"
+    name      = "RollingUpdateEnabled"
     value     = "true"
   }
   setting {
