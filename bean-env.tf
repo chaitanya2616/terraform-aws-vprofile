@@ -55,7 +55,7 @@ resource "aws_elastic_beanstalk_environment" "vpro-bean-prod" {
   setting {
     namespace = "aws:autoscaling:asg"
     name      = "MaxSize"
-    value     = "8"
+    value     = "4"
   }
 
   setting {
