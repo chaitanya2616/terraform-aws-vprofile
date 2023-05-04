@@ -1,3 +1,4 @@
+
 resource "aws_instance" "vprofile-bastion" {
   ami                    = lookup(var.AMIS, var.AWS_REGION)
   instance_type          = "t2.micro"
@@ -20,9 +21,9 @@ resource "aws_instance" "vprofile-bastion" {
     inline = [
       "chmod +x /tmp/vprofile-dbdeploy.sh",
       "sudo /tmp/vprofile-dbdeploy.sh"
-
     ]
   }
+
   connection {
     user        = var.USERNAME
     private_key = file(var.PRIV_KEY_PATH)
