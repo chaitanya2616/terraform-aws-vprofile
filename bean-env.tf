@@ -1,5 +1,5 @@
 resource "aws_elastic_beanstalk_environment" "vprofile-bean-prod" {
-  application         = aws_elastic_beanstalk_application.vprofile-prod
+  application         = aws_elastic_beanstalk_application.vprofile-prod.name
   name                = "vprofile-bean-prod"
   solution_stack_name = "64bit Amazon Linux 2 v4.3.7 running Tomcat 8.5 Corretto 11"
   cname_prefix        = "vprofile-bean-prod-domain"
@@ -23,7 +23,7 @@ resource "aws_elastic_beanstalk_environment" "vprofile-bean-prod" {
   setting {
     namespace = "aws:ec2:vpc"
     name      = "Subnets"
-    value     = join(",", [module.vpc.private_subnets[0], module.vpc.private_subnets[1]], module.vpc.private_subnets[2])
+    value     = join(",", [module.vpc.private_subnets[0], module.vpc.private_subnets[1], module.vpc.private_subnets[2]])
   }
 
   setting {
@@ -38,8 +38,8 @@ resource "aws_elastic_beanstalk_environment" "vprofile-bean-prod" {
   }
   setting {
     namespace = "aws:autoscaling:launchconfiguration"
-    name = "EC2KeyName"
-    value = aws_key_pair.vprofilekey.key_name
+    name      = "EC2KeyName"
+    value     = aws_key_pair.vprofilekey.key_name
   }
   setting {
     name      = "aws:autoscaling:asg"
