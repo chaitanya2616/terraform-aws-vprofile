@@ -1,3 +1,3 @@
-resource "aws_elastic_beanstalk_application" "vprofile-prod26" {
-  name = "vprofile-pod26"
+resource "aws_elastic_beanstalk_application" "vprofile-prod-1" {
+  name = "vprofile-prod-1"
 }
