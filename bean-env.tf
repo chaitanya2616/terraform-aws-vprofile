@@ -1,4 +1,4 @@
-resource "aws_elastic_beanstalk_environment" "vprofile-cs-bean-prod" {
+resource "aws_elastic_beanstalk_environment" "vprofile-bean-csprod26" {
   application         = aws_elastic_beanstalk_application.vprofile-prod26.name
   name                = "vprofile-bean-prod"
   solution_stack_name = "64bit Amazon Linux 2 v4.3.7 running Tomcat 8.5 Corretto 11"
