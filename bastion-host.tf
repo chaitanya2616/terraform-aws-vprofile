@@ -8,7 +8,7 @@ resource "aws_instance" "vprofile-bastion" {
 
   tags = {
     Name    = "vprofile-bastion"
-    Project = "vprofile"
+    PROJECT = "vprofile"
   }
 
   provisioner "file" {
@@ -20,6 +20,7 @@ resource "aws_instance" "vprofile-bastion" {
     inline = [
       "chmod +x /tmp/vprofile-dbdeploy.sh",
       "sudo /tmp/vprofile-dbdeploy.sh"
+
     ]
   }
   connection {
