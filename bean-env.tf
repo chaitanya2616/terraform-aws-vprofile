@@ -43,7 +43,7 @@ resource "aws_elastic_beanstalk_environment" "vpro-bean-myprod26" {
   }
   setting {
     namespace = "aws:autoscaling:asg"
-    name      = "Availability_Zones"
+    name      = "Availability Zones"
     value     = "Any 3"
   }
   setting {
@@ -61,11 +61,11 @@ resource "aws_elastic_beanstalk_environment" "vpro-bean-myprod26" {
     namespace = "environment"
     value     = "prod"
   }
-  setting {
+  /*setting {
     name      = "aws:elasticbeanstalk:application:environment"
     namespace = "LOGGING_APPENDER"
     value     = "GRAYLOG"
-  }
+  }*/
   setting {
     name      = "aws:elasticbeanstalk:healthreporting:system"
     namespace = "SystemType"
