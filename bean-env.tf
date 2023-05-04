@@ -61,15 +61,15 @@ resource "aws_elastic_beanstalk_environment" "vpro-bean-myprod26" {
     namespace = "environment"
     value     = "prod"
   }
-  setting {
+  /*setting {
     name      = "aws:elasticbeanstalk:application:environment"
     namespace = "LOGGING_APPENDER"
     value     = "GRAYLOG"
-  }
+  }*/
   setting {
     name      = "aws:elasticbeanstalk:healthreporting:system"
     namespace = "SystemType"
-    value     = "enhanced"
+    value     = "basic"
   }
   setting {
     name      = "aws:autoscaling:updatepolicy:rollingupdate"
