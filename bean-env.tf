@@ -63,7 +63,7 @@ resource "aws_elastic_beanstalk_environment" "vpro-bean-myprod26" {
   }
   setting {
     name      = "aws:elasticbeanstalk:application:environment"
-    namespace = "LOGGING_APPENDER"
+    namespace = "LOGGING APPENDER"
     value     = "GRAYLOG"
   }
   setting {
