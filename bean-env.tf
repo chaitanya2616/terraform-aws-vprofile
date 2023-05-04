@@ -42,8 +42,8 @@ resource "aws_elastic_beanstalk_environment" "vpro-bean-myprod26" {
     value     = aws_key_pair.vprofilekey.key_name
   }
   setting {
-    name      = "aws:autoscaling:asg"
-    namespace = "Availability Zones"
+    namespace = "aws:autoscaling:asg"
+    name      = "Availability_Zones"
     value     = "Any 3"
   }
   setting {
