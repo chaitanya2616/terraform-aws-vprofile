@@ -69,9 +69,9 @@ resource "aws_security_group" "vprofile-backend-sg" {
     security_groups = [aws_security_group.vprofile-prod-sg.id]
   }
   ingress {
-    from_port = 3306
-    protocol  = "tcp"
-    to_port   = 3306
+    from_port       = 3306
+    protocol        = "tcp"
+    to_port         = 3306
     security_groups = [aws_security_group.vprofile-bastion-sg.id]
   }
 }
