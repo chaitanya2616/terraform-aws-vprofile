@@ -1,4 +1,3 @@
-
 resource "aws_instance" "vprofile-bastion" {
   ami                    = lookup(var.AMIS, var.AWS_REGION)
   instance_type          = "t2.micro"
